@@ -1,15 +1,121 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
 
-    <h1>You ARE FUCKING NIGHTMARE</h1>
+{% extends 'base.html' %}
 
-</body>
-</html>
+{% block content %}
+<section class="main">
+        <div class="page">
+            <div class="phone-logo">
+                <img src="img/home-phones.png" alt="home-phones">
+                <img src="img/screenshot1.png" alt="screenshot1" class="screen1">
+
+            <div class="login-block">
+                <div class="login">
+                    <img src="img/WBLlWbPOKZ9 (1).png" alt="insta logo" class="insta-logo">
+
+                <form class="inputs">
+                    <div class="inputs1">
+                        <div class="email">
+                            <div>
+                                <input type="text" name="email" id="email" placeholder="Phone number, username, or email">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="inputs2">
+                        <div class="password">
+                            <div>
+                                <input type="text" name="password" id="password" placeholder="Password  ">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="log-in">
+                        <button class="login-button"><strong>Log in</strong></button>
+                    </div>
+                    <div class="or">
+                        <div class="line"></div>
+                        <div class="or-word">OR</div>
+                        <div class="line"></div>
+                    </div>
+
+                    <div class="facebook">
+                        <button class= "facebook-logo">
+                        <img src="img/TJztmXpWTmS.png" alt="facebook-logo" class="facebook-logo-img">
+
+                        Log in with Facebook
+                    </button>
+                    </div>
+                    <div class="forgot-password">
+                        <a href="" class="forgot-password-into">Forget password?</a>
+                    </div>
+                </form>
+
+            </div>
+            <form action="" class="login-bottom">
+                    <div class="sign-up">
+                        <p class="sign-up-new">
+                            Don't have an account?
+                            <a href="" class="sign-up-link"><strong>Sign Up</strong></a>
+                        </p>
+
+                    </div>
+            </form>
+            <div class="get-app">
+                <p class="get-the-app">Get the app.</p>
+            </div>
+
+            <div class="download">
+                    <img src="img/c5Rp7Ym-Klz.png" alt="" class="app-store-img">
+                    <img src="img/Yfc020c87j0.png" alt="" class="google-play-img">
+            </div>
+        </div>
+        </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="links">
+            <a href="#" >Meta</a>
+            <a href="#" class="link">About</a>
+            <a href="#" class="link">Blog</a>
+            <a href="#" class="link">Jobs</a>
+            <a href="#" class="link">Jobs</a>
+            <a href="#" class="link">Jobs</a>
+            <a href="#"  class="link">Help</a>
+            <a href="#" class="link">API</a>
+            <a href="#" class="link" >Privacy</a>
+            <a href="#" class="link">Terms</a>
+            <a href="#" class="link">Locations</a>
+            <a href="#" class="link">Instagram Lite</a>
+            <a href="#" class="link">Threads</a>
+            <a href="#" class="link">Contact Uploading & Non-Users</a>
+            <a href="#" class="link">Meta Verified</a>
+        </div>
+        <div class="contacts">
+            <select name="language" id="language" class="languages">
+                <option value="English">English</option>
+                <option value="Spanish">Spanish</option>
+                <option value="Mandarin Chinese">Chinese</option>
+                <option value="Hindi">Hindi</option>
+                <option value="Arabic">Arabic</option>
+                <option value="Portuguese">Portuguese</option>
+                <option value="Bengali">Bengali</option>
+                <option value="Russian">Russian</option>
+                <option value="Japanese">Japanese</option>
+                <option value="Punjabi">Punjabi</option>
+                <option value="German">German</option>
+                <option value="Javanese">Javanese</option>
+                <option value="Telugu">Telugu</option>
+                <option value="French">French</option>
+                <option value="Marathi">Marathi</option>
+                <option value="Turkish">Turkish</option>
+                <option value="Tamil">Tamil</option>
+                <option value="Urdu">Urdu</option>
+                <option value="Vietnamese">Vietnamese</option>
+                <option value="Italian">Italian</option>
+
+            </select>
+            <p>© 2024 Instagram from Meta</p>
+        </div>
+    </footer>
+
+
+{% endblock %}

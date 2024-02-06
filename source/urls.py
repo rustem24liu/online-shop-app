@@ -17,9 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from online_shop.views import index_view
+from online_shop.views import index_view, category_list_view
+from source.views import IndexView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index_view)
+    path('', IndexView.as_view(), name='home_page'),
+    path('category/', category_list_view, name='category_list_view'),
 ]
