@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="list-group">
+        {% if products %}
+            {% for product in products %}
+                <span>{{ product.name }}</span>
+                <span>{{ product.description }}</span>
+                <span>{{ product.category }}</span>
+                <span>{{ product.price }}</span>
+            {% endfor %}
+        {% else %}
+            <p>No categories found.</p>
+        {% endif %}
+    </div>
+{% endblock %}
+

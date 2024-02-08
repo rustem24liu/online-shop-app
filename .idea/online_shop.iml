@@ -21,7 +21,6 @@
   <component name="TemplatesService">
     <option name="templateFileTypes">
       <list>
-        <option value="CSS" />
         <option value="HTML" />
         <option value="JSON" />
         <option value="XHTML" />

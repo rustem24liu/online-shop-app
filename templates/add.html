@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-body">
+              <img src="{% static 'img/clothes.jpg' %}" alt="clothes" style="height: 250px;">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="{% url 'add_category' %}" class="btn btn-primary">Add Category</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-body">
+              <img src="{% static 'img/clothes.jpg' %}" alt="clothes" style="height: 250px;">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="{% url 'add_category' %}" class="btn btn-primary">Add Products</a>
+          </div>
+        </div>
+      </div>
+</div>
+{% endblock %}

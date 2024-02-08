@@ -17,11 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from online_shop.views import index_view, category_list_view
+from online_shop.views import index_view, category_list_view, products_view, category_create_view, add
 from source.views import IndexView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', IndexView.as_view(), name='home_page'),
-    path('category/', category_list_view, name='category_list_view'),
+    path('category/', category_list_view, name='category_list'),
+    path('products/', products_view, name='products_view'),
+    path('add/', add, name='add'),
+    path('add/category', category_create_view, name='add_category'),
 ]
