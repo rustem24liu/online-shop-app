@@ -59,3 +59,17 @@ body{
 .showcase-text{
     width: 500px;
 }
+
+.category{
+    background-color: #006b1b;
+}
+
+.products_list{
+    display: inline-block;
+    margin: 50px;
+}
+.products{
+    margin: 0;
+    background-color: #dee2e6;
+    text-align: center;
+}

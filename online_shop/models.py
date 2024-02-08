@@ -27,4 +27,4 @@ class Product(models.Model):
     img = models.ImageField(upload_to='None', null=True, blank=True)
 
     def __str__(self):
-        return f"{self.name} {self.description} in {self.category} {self.price} {self.img}"
+        return f"{self.name} {self.description[:20]} in {self.category} {self.price} {self.img}"

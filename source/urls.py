@@ -19,14 +19,16 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 
-from online_shop.views import index_view, category_list_view, products_view, category_create_view, add
+from online_shop.views import index_view, category_list_view, products_view, category_create_view, add, \
+    product_create_view
 from source.views import IndexView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', IndexView.as_view(), name='home_page'),
     path('category/', category_list_view, name='category_list'),
-    path('products/', products_view, name='products_view'),
+    path('products/', products_view, name='products_list'),
     path('add/', add, name='add'),
     path('add/category', category_create_view, name='add_category'),
+    path('add/product', product_create_view, name='add_product')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

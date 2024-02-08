@@ -1,16 +1,31 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
-    <div class="list-group">
-        {% if products %}
-            {% for product in products %}
-                <span>{{ product.name }}</span>
-                <span>{{ product.description }}</span>
-                <span>{{ product.category }}</span>
-                <span>{{ product.price }}</span>
-            {% endfor %}
-        {% else %}
-            <p>No categories found.</p>
-        {% endif %}
+    <div class="products">
+    {% for product in products %}
+{#     <div class="list-group" >#}
+{#        <button type="button" class="list-group-item list-group-item-action" style="color: darkgray" aria-current="true">#}
+{#            {% if category.category_img %}#}
+{#                <img src="{{ category.category_img.url }}" alt="">#}
+{#            {% endif %}#}
+{#              <a href=""><h5 class="mb-1" style="color: black">{{ product.id }}. {{product.name}}<p style="color: #666666; font-size: 15px"> by {{ product.price}} category is: {{ product.category.name }}</p>#}
+{#              </h5></a>#}
+{#              <a class="btn btn-primary" style="margin: 5px; width: 60px">Edit</a>#}
+{#            <a  class="btn btn-danger" style="width: 100px; margin: 5px; ">Delete</a>#}
+{#          </button>#}
+{#    </div>#}
+        <div class="products_list">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="..." alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">{{ product.name }}</h5>
+                <p class="card-text">{{ product.description }}</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+        </div>
+</div>
+
+    {% endfor %}
     </div>
 {% endblock %}
 

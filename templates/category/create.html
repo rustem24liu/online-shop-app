@@ -4,6 +4,7 @@
         <h1>Create category</h1>
         <form action="{% url 'add_category' %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
+
 {#            <div class="w-50">#}
 {#                {% for error in non_field_errors %}#}
 {#                    <p class="form-error">{{ error }}</p>#}
