@@ -8,6 +8,8 @@ class Category(models.Model):
 
     description = models.TextField(max_length=500, null=True, blank=True, verbose_name="Description")
 
+    category_img = models.ImageField(null=True, blank=True, upload_to='images/', verbose_name="category image")
+
     def __str__(self):
         return f"{self.name} - {self.description}"
 

@@ -16,6 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
 
 from online_shop.views import index_view, category_list_view, products_view, category_create_view, add
 from source.views import IndexView
@@ -27,4 +29,4 @@ urlpatterns = [
     path('products/', products_view, name='products_view'),
     path('add/', add, name='add'),
     path('add/category', category_create_view, name='add_category'),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
