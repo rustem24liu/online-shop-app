@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="products">
+    <h1>Bookmark</h1>
+    {% for product in products %}
+        <div class="products_list">
+                <div class="card" style="width: 18rem;">
+
+                    {% if product.product.img %}
+                        <img class="card-img-top" src="{{ product.product.img.url }}" alt="Card image cap">
+                    {% endif %}
+                  <div class="card-body">
+                    <h5 class="card-title">{{ product.product.name }}</h5>
+                        <p class="card-text"><img src="{% static 'img/cash.png' %}" alt="money" style="height: 25px">: {{ product.product.price }}$</p>
+                      <p class="text">{{ product.product.description }}</p>
+                    <a href="{% url 'product_detail' product.product.id %}" class="btn btn-primary">Look at the product</a>
+                      <a href="{% url 'bookmark_delete' product.product.id %}" class="btn btn-danger mt-3">Remove</a>
+                  </div>
+                </div>
+        </div>
+
+    {% endfor %}
+    </div>
+{% endblock %}

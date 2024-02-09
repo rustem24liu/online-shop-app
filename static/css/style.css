@@ -68,8 +68,9 @@ body{
 }
 .category{
     background-color: #dee2e6;
-     padding: 30px 50px 30px 50px;
+    padding: 30px 50px 30px 50px;
     border-radius: 15px;
+    text-align: center;
 }
 
 .products_list{
@@ -81,6 +82,7 @@ body{
     background-color: #dee2e6;
     text-align: center;
     border-radius: 15px;
+    padding: 30px 50px 30px 50px;
 }
 .category_items{
     margin-bottom: 30px;
@@ -117,4 +119,17 @@ body{
     margin: 50px auto;
     margin-right: 360px;
 
+}
+.bookmark{
+    background-color: #dee2e6;
+    display: flex;
+}
+
+.add_bookmark{
+    /*margin-left: 100px;*/
+    /*margin-top: 300px;*/
+
+}
+.book{
+    padding: 100px;
 }
