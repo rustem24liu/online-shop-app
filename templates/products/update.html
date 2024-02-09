@@ -3,13 +3,14 @@
 {% block content %}
     <form action="{% url 'product_update' product.id %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
+{#        {{ form.as_p }}#}
             <div class="w-50 mb-5">
                 {% for error in non_field_errors %}
                     <p class="text-danger">{{ error }}</p>
                 {% endfor %}
                 <div>
                     <label for="{{ form.name.id_for_label }}" class="form-label">{{ form.name.label }}:</label>
-                    <input type="text" class="form-control" name = "name" placeholder="Name">
+                    <input type="text" class="form-control" name = "name" placeholder="Name" value="{{ form.name.value }}">
                         {% for error in form.name.errors %}
                             <p class="text-danger">{{ error }}</p>
                         {% endfor %}
@@ -17,7 +18,7 @@
                     <div>
 
                         <label for="{{ form.description.id_for_label }}" class="form-label mt-3">{{ form.description.label }}:</label>
-                        <textarea  class="form-control" name = "description" placeholder="Description" rows="4" ></textarea>
+                        <textarea  class="form-control" name = "description" placeholder="Description" rows="4" >{{ form.description.value }}</textarea>
                         {% for error in form.description.errors %}
                             <p class="text-danger">{{ error }}</p>
                         {% endfor %}
@@ -27,7 +28,7 @@
             <div>
 
                 <label for="{{ form.category.id_for_label }}" class="form-label">{{ form.category.label }}:</label>
-                <select name="category" id="" class="form-control">
+                <select name="category" id="" class="form-control" >
                     {% for category in categories %}
                         <option value="{{ category.id }}">{{ category.name }}</option>
                     {% endfor %}
@@ -39,14 +40,17 @@
 
             <div>
                     <label for="{{ form.price.id_for_label }}" class="form-label">{{ form.price.label }}:</label>
-                    <input type="number" class="form-control" name = "price" placeholder="Price">
+                    <input type="number" class="form-control" name = "price" placeholder="Price" value="{{ form.price.value }}">
                         {% for error in form.price.errors %}
                             <p class="form-error">{{ error }}</p>
                         {% endfor %}
                 </div>
             <div>
                     <label for="{{ form.img.id_for_label }}" class="form-label">{{ form.img.label }}:</label>
+{#                    <input type="file" name="img" class="form-control" placeholder="Your image" accept="image/*" id="id_img" value="{{ form.img.value }}">#}
                     {{ form.img }}
+
+
                         {% for error in form.img.errors %}
                             <p class="form-error">{{ error }}</p>
                         {% endfor %}

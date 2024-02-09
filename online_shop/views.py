@@ -77,7 +77,6 @@ def category_update_view(request, *args, **kwargs):
 
     if request.method == "GET":
         form = CategoryForm(
-
             initial={
                 'name': category.name,
                 'description': category.description,
@@ -123,15 +122,20 @@ def product_update_view(request, *args, **kwargs):
                       context={'form': form, 'product': product, 'categories': Category.objects.all()})
     elif request.method == "POST":
         form = ProductForm(request.POST, request.FILES)
-        print(form.is_valid())
+
+        print(form.as_p())
         if form.is_valid():
+            category_id = form.cleaned_data['category']
+            print(category_id, type(category_id))
+            category = get_object_or_404(Category, pk = category_id)
             product.name = form.cleaned_data['name']
             product.description = form.cleaned_data['description']
-            product.category = form.cleaned_data['category']
+            product.category = category
             product.price = form.cleaned_data['price']
-            product.img = form.cleaned_data['img']
+            if 'img' in request.FILES:
+                product.img = request.FILES['img']
             product.save()
-            return redirect('product_detail', pk=product.pk)
+            return redirect('product_detail', pk=product.id)
         else:
             return render(request, 'products/update.html',
                           context={'form': form, 'product': product, 'categories': Category.objects.all()})
