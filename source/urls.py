@@ -21,7 +21,7 @@ from django.conf.urls.static import static
 
 from online_shop.views import index_view, category_list_view, products_view, category_create_view, add, \
     product_create_view, ProductDetailView, CategoryDetailView, category_update_view, category_delete_view, \
-    product_update_view
+    product_update_view, product_delete_view
 from source.views import IndexView
 
 urlpatterns = [
@@ -36,5 +36,6 @@ urlpatterns = [
     path('category/<int:pk>', CategoryDetailView.as_view(), name='category_detail'),
     path('category/update/<int:pk>', category_update_view, name='category_update'),
     path('category/delete/<int:pk>', category_delete_view, name='category_delete'),
-    path('products/update/<int:pk>', product_update_view, name='product_update')
+    path('products/update/<int:pk>', product_update_view, name='product_update'),
+    path('products/delete/<int:pk>', product_delete_view, name = 'product_delete')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

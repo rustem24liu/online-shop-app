@@ -89,7 +89,8 @@ def category_update_view(request, *args, **kwargs):
         if form.is_valid():
             category.name = form.cleaned_data['name']
             category.description = form.cleaned_data['description']
-            category.category_img = form.cleaned_data['category_img']
+            if 'category_img' in request.FILES:
+                category.category_img = form.cleaned_data['category_img']
             category.save()
             return redirect('category_detail', pk=category.pk)
         else:
@@ -139,6 +140,14 @@ def product_update_view(request, *args, **kwargs):
         else:
             return render(request, 'products/update.html',
                           context={'form': form, 'product': product, 'categories': Category.objects.all()})
+
+def product_delete_view(request, *args, **kwargs):
+    product = get_object_or_404(Product, pk = kwargs.get('pk'))
+    if request.method == 'GET':
+        return render(request, 'products/delete.html', context={'product': product})
+    elif request.method == 'POST':
+        product.delete()
+        return redirect('products_list')
 
 
 class ProductDetailView(View):
