@@ -1,0 +1,38 @@
+[
+{
+  "model": "online_shop.category",
+  "pk": 1,
+  "fields": {
+    "name": "Books",
+    "description": "The Books category encompasses a wide range of literary works, including fiction, non-fiction, educational, and reference materials. From timeless classics to contemporary bestsellers, this category caters to readers of all ages and interests.",
+    "category_img": "images/book.png"
+  }
+},
+{
+  "model": "online_shop.category",
+  "pk": 2,
+  "fields": {
+    "name": "Clothes",
+    "description": "The Clothes category presents a vibrant array of apparel and fashion essentials for every occasion and style preference. From casual wear to formal attire, this category offers a diverse selection of garments, accessories, and footwear to suit every taste and season.",
+    "category_img": "images/clothes-rack_mautg27.png"
+  }
+},
+{
+  "model": "online_shop.category",
+  "pk": 3,
+  "fields": {
+    "name": "Technology",
+    "description": "The Technology category delves into the ever-evolving realm of innovations, gadgets, and digital advancements. From cutting-edge electronics to groundbreaking software, this category showcases the latest developments shaping our modern world.",
+    "category_img": "images/technology.png"
+  }
+},
+{
+  "model": "online_shop.category",
+  "pk": 4,
+  "fields": {
+    "name": "Food",
+    "description": "The Food category tantalizes the senses with a delectable assortment of culinary delights, recipes, and gastronomic experiences from around the globe. Dive into a world of flavors, textures, and aromas as you explore diverse cuisines, cooking techniques, and ingredients.",
+    "category_img": "images/fast-food.png"
+  }
+}
+]
