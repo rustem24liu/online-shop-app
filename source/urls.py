@@ -15,30 +15,16 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-
-from online_shop.views import index_view, category_list_view, products_view, category_create_view, add, \
-    product_create_view, ProductDetailView, CategoryDetailView, category_update_view, category_delete_view, \
-    product_update_view, product_delete_view, add_to_bookmark, bookmarks_list_view, bookmark_delete_view
 from source.views import IndexView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', IndexView.as_view(), name='home_page'),
-    path('category/', category_list_view, name='category_list'),
-    path('products/', products_view, name='products_list'),
-    path('add/', add, name='add'),
-    path('add/category', category_create_view, name='add_category'),
-    path('add/product', product_create_view, name='add_product'),
-    path('products/<int:pk>', ProductDetailView.as_view(), name='product_detail'),
-    path('category/<int:pk>', CategoryDetailView.as_view(), name='category_detail'),
-    path('category/update/<int:pk>', category_update_view, name='category_update'),
-    path('category/delete/<int:pk>', category_delete_view, name='category_delete'),
-    path('products/update/<int:pk>', product_update_view, name='product_update'),
-    path('products/delete/<int:pk>', product_delete_view, name = 'product_delete'),
-    path('bookmarks/add/<int:pk>',add_to_bookmark, name='add_to_bookmark'),
-    path('bookmarks/list', bookmarks_list_view, name='bookmark_list'),
-    path('bookmarks/delete/<int:pk>', bookmark_delete_view, name='bookmark_delete')
+    path('category/', include('online_shop.urls.category_url')),
+    path('products/', include('online_shop.urls.product_urls')),
+    path('add/', include('online_shop.urls.add_urls')),
+    path('bookmarks/', include('online_shop.urls.bookmark_urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
