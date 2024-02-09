@@ -24,7 +24,7 @@ class Product(models.Model):
 
     price = models.DecimalField(max_length=500, null=False, blank=False, decimal_places=2, verbose_name="price", max_digits=100)
 
-    img = models.ImageField(upload_to='None', null=True, blank=True)
+    img = models.ImageField(upload_to='images/', null=True, blank=True, verbose_name="img")
 
     def __str__(self):
-        return f"{self.name} {self.description[:20]} in {self.category} {self.price} {self.img}"
+        return f"{self.name} {self.description[:10]} in {self.category} {self.price} {self.img}"

@@ -1,4 +1,8 @@
-from django.shortcuts import render, redirect
+from urllib import request
+
+from django.shortcuts import render, redirect, get_object_or_404
+from django.views import View
+from django.views.generic import DetailView
 
 from online_shop.forms import CategoryForm, ProductForm
 from online_shop.models import Category, Product
@@ -20,8 +24,10 @@ def products_view(request):
     products = Product.objects.all()
     return render(request, 'products/list.html', context={'products': products})
 
+
 def add(request):
     return render(request, 'add.html')
+
 
 def category_create_view(request):
     # print(request.GET)
@@ -42,25 +48,104 @@ def category_create_view(request):
         else:
             return render(request, 'category/create.html', context={'form': form})
 
+
 def product_create_view(request):
     if request.method == "GET":
         form = ProductForm()
-
-        return render(request, 'products/create.html', context={'form':form, 'categories': Category.objects.all()})
+        return render(request, 'products/create.html', context={'form': form, 'categories': Category.objects.all()})
     elif request.method == "POST":
         print("its POST")
         form = ProductForm(request.POST, request.FILES)
         print(form.is_valid())
         if form.is_valid():
-            category = Category.objects.get(pk = request.POST.get('category'))
+            category = Category.objects.get(pk=request.POST.get('category'))
             print(category)
             new_product = Product.objects.create(
                 name=form.cleaned_data['name'],
                 description=form.cleaned_data['description'],
-                category = category,
+                category=category,
                 price=form.cleaned_data['price'],
                 img=form.cleaned_data['img'],
             )
             return redirect('products_list')
         else:
-            return render(request, 'products/create.html', context={'form': form})
+            return render(request, 'products/create.html', context={'form': form, 'categories': Category.objects.all()})
+
+
+def category_update_view(request, *args, **kwargs):
+    category = get_object_or_404(Category, pk=kwargs.get('pk'))
+
+    if request.method == "GET":
+        form = CategoryForm(
+
+            initial={
+                'name': category.name,
+                'description': category.description,
+                'category_img': category.category_img
+            }
+        )
+        return render(request, 'category/update.html', context={'form': form, 'category': category})
+    elif request.method == "POST":
+        form = CategoryForm(request.POST, request.FILES)
+        if form.is_valid():
+            category.name = form.cleaned_data['name']
+            category.description = form.cleaned_data['description']
+            category.category_img = form.cleaned_data['category_img']
+            category.save()
+            return redirect('category_detail', pk=category.pk)
+        else:
+            return render(request, 'category/update.html', context={'form': form, 'category': category})
+
+
+def category_delete_view(request, *args, **kwargs):
+    category = get_object_or_404(Category, pk=kwargs.get('pk'))
+    if request.method == "GET":
+        return render(request, 'category/delete.html', context={'category': category})
+    elif request.method == "POST":
+        category.delete()
+        return redirect('category_list')
+
+
+def product_update_view(request, *args, **kwargs):
+    product = get_object_or_404(Product, pk=kwargs.get('pk'))
+
+    if request.method == "GET":
+        form = ProductForm(
+            initial={
+                'name': product.name,
+                'description': product.description,
+                'category': product.category,
+                'price': product.price,
+                'img': product.img,
+            }
+        )
+        return render(request, 'products/update.html',
+                      context={'form': form, 'product': product, 'categories': Category.objects.all()})
+    elif request.method == "POST":
+        form = ProductForm(request.POST, request.FILES)
+        print(form.is_valid())
+        if form.is_valid():
+            product.name = form.cleaned_data['name']
+            product.description = form.cleaned_data['description']
+            product.category = form.cleaned_data['category']
+            product.price = form.cleaned_data['price']
+            product.img = form.cleaned_data['img']
+            product.save()
+            return redirect('product_detail', pk=product.pk)
+        else:
+            return render(request, 'products/update.html',
+                          context={'form': form, 'product': product, 'categories': Category.objects.all()})
+
+
+class ProductDetailView(View):
+    def get(self, request, *args, **kwargs):
+        form = ProductForm()
+        product = get_object_or_404(Product, pk=kwargs['pk'])
+        return render(request, 'products/view.html', context={'product': product, 'form': form})
+
+
+class CategoryDetailView(View):
+    def get(self, request, *args, **kwargs):
+        form = CategoryForm()
+        category = get_object_or_404(Category, pk=kwargs.get('pk'))
+        return render(request, 'category/view.html', context={'form': form, 'category': category})

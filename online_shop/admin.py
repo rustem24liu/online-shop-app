@@ -10,7 +10,7 @@ class ProductAdmin(admin.ModelAdmin):
     list_display = ['name', 'description', 'price', 'category', 'img']
     list_filter = ['price', 'category']
     search_fields = ['name', 'category']
-    fields = ['name', 'description', 'price', 'category', 'img', 'created_at']
+    fields = ['name', 'description', 'price', 'category', 'img']
     readonly = ['created_at']
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ['name', 'description']

@@ -1,23 +1,15 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-    <div class="category" style="background-color: #dee2e6">
+    <div class="category">
+    <h1>Choose category that you want</h1>
     {% for category in categories %}
-{#    <div class="list-group">#}
-{#        <button type="button" class="list-group-item list-group-item-action" style="color: darkgray" aria-current="true">#}
-{#            {% if category.category_img %}#}
-{#                <img src="{{ category.category_img.url }}" alt="">#}
-{#            {% endif %}#}
-{#              <a href=""><h5 class="mb-1" style="color: black">{{ category.id }}. {{category.name}}<p style="color: #666666; font-size: 15px"> by {{ category.description }}</p>#}
-{#              </h5></a>#}
-{#              <a class="btn btn-primary" style="margin: 5px; width: 60px">Edit</a>#}
-{#            <a  class="btn btn-danger" style="width: 100px; margin: 5px; ">Delete</a>#}
-{#          </button>#}
-{#    </div>#}
-{#        #}
-        <div class="card mb-3" style="max-width: 540px;">
-              <div class="row no-gutters">
+
+        <div class="card category_items" style="max-width: 100%;">
+              <button type="button", class="list-group-item list-group-item-action" aria-current="true">
+                  <div class="row no-gutters">
                 <div class="col-md-4">
+
                     {% if category.category_img %}
                   <img src="{{ category.category_img.url }}" class="card-img" alt="...">
                     {% endif %}
@@ -27,11 +19,14 @@
                     <h5 class="card-title">{{ category.id }}. {{ category.name }}</h5>
                     <p class="card-text">{{ category.description }}</p>
                     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                      <a class="btn btn-primary" style="margin: 5px; width: 60px">Edit</a>
-                      <a class="btn btn-danger" style="width: 100px; margin: 5px; ">Delete</a>
+
+                      <a href="{% url 'category_detail' category.id %}" class="btn btn-primary" style="margin: 5px; width: 130px">See more...</a>
+{#                      <a href="{% url 'cate' %}"></a>#}
+
                   </div>
                 </div>
                 </div>
+              </button>
         </div>
     {% endfor %}
     </div>

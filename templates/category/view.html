@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <div class="category">
+        <div class="row no-gutters">
+                <div class="col-md-4">
+
+                    {% if category.category_img %}
+                  <img src="{{ category.category_img.url }}" class="card-img" alt="..." style="height: 100px; width: 100px;">
+                    {% endif %}
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h2 class="card-title">{{ category.id }}. {{ category.name }}</h2>
+                    <p class="card-text mt-3">Description: {{ category.description }}</p>
+
+                      <a href="{% url 'category_update' category.id %}" class="btn btn-primary" style="margin: 5px; width: 130px">Edit</a>
+                      <a href="{% url 'category_delete' category.id %}" class="btn btn-danger" style="margin: 5px; width: 130px">Delete</a>
+    </div>
+      <div class="products">
+    {% for product in category.products.all %}
+        <div class="products_list">
+                <div class="card" style="width: 18rem;">
+
+                    {% if product.img %}
+                        <img class="card-img-top" src="{{ product.img.url }}" alt="Card image cap">
+                    {% endif %}
+                  <div class="card-body">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                        <p class="card-text"><img src="{% static 'img/cash.png' %}" alt="money" style="height: 25px">: {{ product.price }}$</p>
+                      <p class="text">{{ product.description }}</p>
+                    <a href="{% url 'product_detail' product.id %}" class="btn btn-primary">Look at the product</a>
+                  </div>
+            </div>
+        </div>
+      {% endfor %}
+      </div>
+{% endblock %}

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
+
 {% block content %}
-    <h1>Create product</h1>
-        <form action="{% url 'add_product' %}" method="POST" enctype="multipart/form-data">
+    <form action="{% url 'product_update' product.id %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
             <div class="w-50 mb-5">
                 {% for error in non_field_errors %}
@@ -25,6 +25,7 @@
                     </div>
 
             <div>
+
                 <label for="{{ form.category.id_for_label }}" class="form-label">{{ form.category.label }}:</label>
                 <select name="category" id="" class="form-control">
                     {% for category in categories %}
@@ -52,7 +53,7 @@
                 </div>
 
         </div>
-{#        {{ form.as_p }}#}
-    <button type="submit" class="btn btn-primary mt-5">Create</button>
+    <button type="submit" class="btn btn-success mt-3" style="width: 100px">Confirm</button>
+
     </form>
 {% endblock %}
